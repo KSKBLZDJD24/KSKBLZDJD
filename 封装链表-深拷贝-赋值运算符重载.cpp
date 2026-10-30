@@ -7,24 +7,28 @@ struct Node
 	Node* next;
 };
 
-class LinkedList {
+class LinkedList
+{
 private:
 	Node* head;
+
 public:
 	LinkedList() {
+		//构造函数 先head初始化
 		head = new Node;
 		head->next = nullptr;
 	}
 
-	//深拷贝
 	LinkedList(const LinkedList& other) {
+		//深拷贝
+		//初始化head
 		head = new Node;
 		head->next = nullptr;
 
 		Node* p = other.head->next;
 		Node* tail = head;
-
-		while (p != nullptr) {
+		while (p != nullptr)
+		{
 			Node* s = new Node;
 			s->data = p->data;
 			s->next = nullptr;
@@ -36,20 +40,22 @@ public:
 		}
 	}
 
-
 	LinkedList& operator = (const LinkedList& other) {
+		//检查this
 		if (this == &other) {
 			return *this;
 		}
 
-	
+		//删数据
 		Node* tur = head;
-		while (tur != 0) {
+		while (tur != nullptr) {
 			Node* temp = tur->next;
 			delete tur;
 			tur = temp;
 		}
 
+		//深拷贝
+		//初始化四条
 		head = new Node;
 		head->next = nullptr;
 
@@ -62,30 +68,34 @@ public:
 
 			tail->next = s;
 			tail = s;
+
 			p = p->next;
 		}
 
+		//返回
 		return *this;
 	}
-	
+
 	~LinkedList() {
-		Node* cur = head;
-		while (cur != 0) {
-			Node* temp = cur->next;
-			delete cur;
-			cur = temp;
+		//删数据
+		Node* p = head;
+
+		while (p != nullptr)
+		{
+			Node* tail = p->next;
+			delete p;
+			p = tail;
 		}
 	}
 
 	bool ListC(int i, int x) {
-		Node* p = head;
-		int j = 0;
-		
 		if (i < 1) {
 			return false;
 		}
 
-		while (p != 0 && j < i - 1) {
+		Node* p = head;
+		int j = 0;
+		while (p != nullptr && j < i - 1) {
 			p = p->next;
 			j++;
 		}
@@ -101,58 +111,59 @@ public:
 
 		return true;
 	}
-	
+
 	bool ListS(int i) {
-		int j = 0;
 		Node* p = head;
+		int j = 0;
+
 		if (i < 1) {
 			return false;
 		}
 
-		while (p != 0 && j < i - 1) {
+		while (p != nullptr && j < i - 1) {
 			p = p->next;
 			j++;
 		}
 
-		if (p == nullptr) {
+		if (p == nullptr || p->next == nullptr) {
 			return false;
 		}
 
 		Node* del = p->next;
 		p->next = del->next;
+		del->next = nullptr;
 		delete del;
 
 		return true;
 	}
 
 	void print() {
-		Node* shuchu = head->next;
-		while (shuchu != nullptr) {
-			cout << "输出:  " << shuchu->data << endl;
-			shuchu = shuchu->next;
+		Node* p = head->next;
+		while (p != nullptr) {
+			cout << "输出：" << p->data << endl;
+			p = p->next;
 		}
 	}
 };
 
 int main() {
-	LinkedList list;
+	LinkedList list1;
 
 	for (int i = 1; i <= 4; i++) {
-		list.ListC(i, i * 5);
+		list1.ListC(i, i * 7);
 	}
+	list1.print();
 
-	list.print();
+	list1.ListS(2);
 
-	list.ListS(2);
+	list1.print();
 
-	list.print();
-
-	LinkedList list2 = list;
-	list2.print();
+	LinkedList list2 = list1;
 
 	LinkedList list3;
-	list3 = list;
-	list3.print();
+	list3 = list1;
+
+	list2.print();
 
 	return 0;
 }
