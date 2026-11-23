@@ -1,4 +1,4 @@
-#include "LinkedList.h"
+ï»¿#include "LinkedList.h"
 
 using namespace std;
 
@@ -103,7 +103,7 @@ void LinkedList::print() const {
 	Node* p = head->next;
 	while (p!=nullptr)
 	{
-		cout << "Êä³ö£º" << p->data << endl;
+		cout << "è¾“å‡ºï¼š" << p->data << endl;
 		p = p->next;
 	}
 }

@@ -1,0 +1,19 @@
+# VS 生成物
+x64/
+Debug/
+Release/
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.ipch
+*.tlog
+*.obj
+*.ilk
+*.pdb
+*.exe
+*.log
+*.bak

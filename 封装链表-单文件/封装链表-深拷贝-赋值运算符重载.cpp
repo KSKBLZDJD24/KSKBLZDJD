@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 using namespace std;
 
 struct Node
@@ -14,14 +14,14 @@ private:
 
 public:
 	LinkedList() {
-		//¹¹Ôìº¯Êý ÏÈhead³õÊ¼»¯
+		//æž„é€ å‡½æ•° å…ˆheadåˆå§‹åŒ–
 		head = new Node;
 		head->next = nullptr;
 	}
 
 	LinkedList(const LinkedList& other) {
-		//Éî¿½±´
-		//³õÊ¼»¯head
+		//æ·±æ‹·è´
+		//åˆå§‹åŒ–head
 		head = new Node;
 		head->next = nullptr;
 
@@ -41,12 +41,12 @@ public:
 	}
 
 	LinkedList& operator = (const LinkedList& other) {
-		//¼ì²éthis
+		//æ£€æŸ¥this
 		if (this == &other) {
 			return *this;
 		}
 
-		//É¾Êý¾Ý
+		//åˆ æ•°æ®
 		Node* tur = head;
 		while (tur != nullptr) {
 			Node* temp = tur->next;
@@ -54,8 +54,8 @@ public:
 			tur = temp;
 		}
 
-		//Éî¿½±´
-		//³õÊ¼»¯ËÄÌõ
+		//æ·±æ‹·è´
+		//åˆå§‹åŒ–å››æ¡
 		head = new Node;
 		head->next = nullptr;
 
@@ -72,12 +72,12 @@ public:
 			p = p->next;
 		}
 
-		//·µ»Ø
+		//è¿”å›ž
 		return *this;
 	}
 
 	~LinkedList() {
-		//É¾Êý¾Ý
+		//åˆ æ•°æ®
 		Node* p = head;
 
 		while (p != nullptr)
@@ -140,7 +140,7 @@ public:
 	void print() {
 		Node* p = head->next;
 		while (p != nullptr) {
-			cout << "Êä³ö£º" << p->data << endl;
+			cout << "è¾“å‡ºï¼š" << p->data << endl;
 			p = p->next;
 		}
 	}
